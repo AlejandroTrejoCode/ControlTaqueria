@@ -361,6 +361,12 @@ BA.applicationContext.stopService(new android.content.Intent(BA.applicationConte
 }
 public anywheresoftware.b4a.keywords.Common __c = null;
 public static anywheresoftware.b4a.objects.Timer _splashtimer = null;
+public static int _contador = 0;
+public anywheresoftware.b4a.objects.PanelWrapper _panellogin = null;
+public anywheresoftware.b4a.objects.ImageViewWrapper _splashlogo = null;
+public anywheresoftware.b4a.objects.LabelWrapper _label1 = null;
+public flm.b4a.animationplus.AnimationPlusWrapper _animacionarriba = null;
+public flm.b4a.animationplus.AnimationSet _animaciones = null;
 public b4a.example.starter _starter = null;
 public static String  _activity_create(boolean _firsttime) throws Exception{
 RDebugUtils.currentModule="main";
@@ -368,17 +374,11 @@ if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_create"))
 	return (String) Debug.delegate(mostCurrent.activityBA, "activity_create", new Object[] {_firsttime});
 RDebugUtils.currentLine=131072;
  //BA.debugLineNum = 131072;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
-RDebugUtils.currentLine=131074;
- //BA.debugLineNum = 131074;BA.debugLine="Activity.LoadLayout(\"Splash\")";
-mostCurrent._activity.LoadLayout("Splash",mostCurrent.activityBA);
 RDebugUtils.currentLine=131075;
- //BA.debugLineNum = 131075;BA.debugLine="SplashTimer.Initialize(\"SplashTimer\", 1500)";
-_splashtimer.Initialize(processBA,"SplashTimer",(long) (1500));
+ //BA.debugLineNum = 131075;BA.debugLine="Activity.LoadLayout(\"Splash\")'";
+mostCurrent._activity.LoadLayout("Splash",mostCurrent.activityBA);
 RDebugUtils.currentLine=131076;
- //BA.debugLineNum = 131076;BA.debugLine="SplashTimer.Enabled = True";
-_splashtimer.setEnabled(anywheresoftware.b4a.keywords.Common.True);
-RDebugUtils.currentLine=131078;
- //BA.debugLineNum = 131078;BA.debugLine="End Sub";
+ //BA.debugLineNum = 131076;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
@@ -395,8 +395,36 @@ if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_resume"))
 	return (String) Debug.delegate(mostCurrent.activityBA, "activity_resume", null);
 RDebugUtils.currentLine=196608;
  //BA.debugLineNum = 196608;BA.debugLine="Sub Activity_Resume";
+RDebugUtils.currentLine=196609;
+ //BA.debugLineNum = 196609;BA.debugLine="Animaciones.Initialize(False)";
+mostCurrent._animaciones.Initialize(anywheresoftware.b4a.keywords.Common.False);
 RDebugUtils.currentLine=196610;
- //BA.debugLineNum = 196610;BA.debugLine="End Sub";
+ //BA.debugLineNum = 196610;BA.debugLine="AnimacionArriba.InitializeTranslate(\"AnimacionArri";
+mostCurrent._animacionarriba.InitializeTranslate(mostCurrent.activityBA,"AnimacionArriba",(float) (0),(float) (0),(float) (0),(float) (-anywheresoftware.b4a.keywords.Common.PerYToCurrent((float) (22),mostCurrent.activityBA)));
+RDebugUtils.currentLine=196611;
+ //BA.debugLineNum = 196611;BA.debugLine="Animaciones.AddAnimation(AnimacionArriba)";
+mostCurrent._animaciones.AddAnimation(mostCurrent._animacionarriba);
+RDebugUtils.currentLine=196612;
+ //BA.debugLineNum = 196612;BA.debugLine="Animaciones.Duration = 1000";
+mostCurrent._animaciones.setDuration((long) (1000));
+RDebugUtils.currentLine=196613;
+ //BA.debugLineNum = 196613;BA.debugLine="Animaciones.PersistAfter = True";
+mostCurrent._animaciones.setPersistAfter(anywheresoftware.b4a.keywords.Common.True);
+RDebugUtils.currentLine=196614;
+ //BA.debugLineNum = 196614;BA.debugLine="Animaciones.Start(SplashLogo)";
+mostCurrent._animaciones.Start((android.view.View)(mostCurrent._splashlogo.getObject()));
+RDebugUtils.currentLine=196615;
+ //BA.debugLineNum = 196615;BA.debugLine="End Sub";
+return "";
+}
+public static String  _animacionarriba_animationend() throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "animacionarriba_animationend"))
+	return (String) Debug.delegate(mostCurrent.activityBA, "animacionarriba_animationend", null);
+RDebugUtils.currentLine=1572864;
+ //BA.debugLineNum = 1572864;BA.debugLine="Sub AnimacionArriba_AnimationEnd";
+RDebugUtils.currentLine=1572866;
+ //BA.debugLineNum = 1572866;BA.debugLine="End Sub";
 return "";
 }
 public static String  _splashtimer_tick() throws Exception{
@@ -404,19 +432,9 @@ RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "splashtimer_tick"))
 	return (String) Debug.delegate(mostCurrent.activityBA, "splashtimer_tick", null);
 RDebugUtils.currentLine=1441792;
- //BA.debugLineNum = 1441792;BA.debugLine="Sub SplashTimer_Tick";
-RDebugUtils.currentLine=1441793;
- //BA.debugLineNum = 1441793;BA.debugLine="If SplashTimer.Interval == 1500 Then";
-if (_splashtimer.getInterval()==1500) { 
+ //BA.debugLineNum = 1441792;BA.debugLine="Sub SplashTimer_Tick'";
 RDebugUtils.currentLine=1441794;
- //BA.debugLineNum = 1441794;BA.debugLine="Msgbox(\"Ya fin\", \"FIn del timer\")";
-anywheresoftware.b4a.keywords.Common.Msgbox("Ya fin","FIn del timer",mostCurrent.activityBA);
-RDebugUtils.currentLine=1441795;
- //BA.debugLineNum = 1441795;BA.debugLine="SplashTimer.Enabled = False";
-_splashtimer.setEnabled(anywheresoftware.b4a.keywords.Common.False);
- };
-RDebugUtils.currentLine=1441797;
- //BA.debugLineNum = 1441797;BA.debugLine="End Sub";
+ //BA.debugLineNum = 1441794;BA.debugLine="End Sub";
 return "";
 }
 }

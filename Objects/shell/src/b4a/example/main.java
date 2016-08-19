@@ -56,8 +56,14 @@ public boolean isSingleton() {
 	}
 public static RemoteObject __c = RemoteObject.declareNull("anywheresoftware.b4a.keywords.Common");
 public static RemoteObject _splashtimer = RemoteObject.declareNull("anywheresoftware.b4a.objects.Timer");
+public static RemoteObject _contador = RemoteObject.createImmutable(0);
+public static RemoteObject _panellogin = RemoteObject.declareNull("anywheresoftware.b4a.objects.PanelWrapper");
+public static RemoteObject _splashlogo = RemoteObject.declareNull("anywheresoftware.b4a.objects.ImageViewWrapper");
+public static RemoteObject _label1 = RemoteObject.declareNull("anywheresoftware.b4a.objects.LabelWrapper");
+public static RemoteObject _animacionarriba = RemoteObject.declareNull("flm.b4a.animationplus.AnimationPlusWrapper");
+public static RemoteObject _animaciones = RemoteObject.declareNull("flm.b4a.animationplus.AnimationSet");
 public static b4a.example.starter _starter = null;
   public Object[] GetGlobals() {
-		return new Object[] {"Activity",main.mostCurrent._activity,"SplashTimer",main._splashtimer,"Starter",Debug.moduleToString(b4a.example.starter.class)};
+		return new Object[] {"Activity",main.mostCurrent._activity,"AnimacionArriba",main.mostCurrent._animacionarriba,"Animaciones",main.mostCurrent._animaciones,"Contador",main._contador,"Label1",main.mostCurrent._label1,"PanelLogin",main.mostCurrent._panellogin,"SplashLogo",main.mostCurrent._splashlogo,"SplashTimer",main._splashtimer,"Starter",Debug.moduleToString(b4a.example.starter.class)};
 }
 }

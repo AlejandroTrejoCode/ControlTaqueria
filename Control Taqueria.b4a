@@ -7,11 +7,13 @@ IconFile=
 NumberOfFiles=2
 File1=main.bal
 File2=Splash.bal
-NumberOfLibraries=1
+NumberOfLibraries=3
 Library1=core
+Library2=animation
+Library3=animationplus
 @EndOfDesignText@
 #Region  Project Attributes 
-	#ApplicationLabel: Contro Taquería
+	#ApplicationLabel: Control Taquería
 	#VersionCode: 1
 	#VersionName: 	
 	#SupportedOrientations: portrait
@@ -25,32 +27,38 @@ Library1=core
 
 Sub Process_Globals	
 	Dim SplashTimer As Timer
+	Dim Contador  As Int	
 End Sub
 
 Sub Globals	
 
+	Private PanelLogin As Panel
+	Private SplashLogo As ImageView
+	Private Label1 As Label
+	Dim AnimacionArriba As AnimationPlus
+	Dim Animaciones As AnimationSet
+	
+	
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)	
-	
-	'Mostrar la pantalla Slash durante 1.5 segundos
-	Activity.LoadLayout("Splash")
-	SplashTimer.Initialize("SplashTimer", 1500)
-	SplashTimer.Enabled = True
-
+	Activity.LoadLayout("Splash")'	
 End Sub
 
 Sub Activity_Resume
-
+Animaciones.Initialize(False)
+AnimacionArriba.InitializeTranslate("AnimacionArriba",0,0,0,-22%y)
+Animaciones.AddAnimation(AnimacionArriba)
+Animaciones.Duration = 1000
+Animaciones.PersistAfter = True
+Animaciones.Start(SplashLogo)
 End Sub
 
 Sub Activity_Pause (UserClosed As Boolean)
 
 End Sub
 
-Sub SplashTimer_Tick
-	'Al concluir los 1.5 segundos, llamar a la capa Login.
-	If SplashTimer.Interval == 1500 Then		
-		SplashTimer.Enabled = False
-	End If
+Sub SplashTimer_Tick'		
+End Sub
+Sub AnimacionArriba_AnimationEnd	
 End Sub
