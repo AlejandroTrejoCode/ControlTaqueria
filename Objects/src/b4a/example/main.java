@@ -360,6 +360,7 @@ public static void killProgram() {
 BA.applicationContext.stopService(new android.content.Intent(BA.applicationContext, starter.class));
 }
 public anywheresoftware.b4a.keywords.Common __c = null;
+public static anywheresoftware.b4a.objects.Timer _splashtimer = null;
 public b4a.example.starter _starter = null;
 public static String  _activity_create(boolean _firsttime) throws Exception{
 RDebugUtils.currentModule="main";
@@ -370,8 +371,14 @@ RDebugUtils.currentLine=131072;
 RDebugUtils.currentLine=131074;
  //BA.debugLineNum = 131074;BA.debugLine="Activity.LoadLayout(\"Splash\")";
 mostCurrent._activity.LoadLayout("Splash",mostCurrent.activityBA);
+RDebugUtils.currentLine=131075;
+ //BA.debugLineNum = 131075;BA.debugLine="SplashTimer.Initialize(\"SplashTimer\", 1500)";
+_splashtimer.Initialize(processBA,"SplashTimer",(long) (1500));
 RDebugUtils.currentLine=131076;
- //BA.debugLineNum = 131076;BA.debugLine="End Sub";
+ //BA.debugLineNum = 131076;BA.debugLine="SplashTimer.Enabled = True";
+_splashtimer.setEnabled(anywheresoftware.b4a.keywords.Common.True);
+RDebugUtils.currentLine=131078;
+ //BA.debugLineNum = 131078;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
@@ -390,6 +397,26 @@ RDebugUtils.currentLine=196608;
  //BA.debugLineNum = 196608;BA.debugLine="Sub Activity_Resume";
 RDebugUtils.currentLine=196610;
  //BA.debugLineNum = 196610;BA.debugLine="End Sub";
+return "";
+}
+public static String  _splashtimer_tick() throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "splashtimer_tick"))
+	return (String) Debug.delegate(mostCurrent.activityBA, "splashtimer_tick", null);
+RDebugUtils.currentLine=1441792;
+ //BA.debugLineNum = 1441792;BA.debugLine="Sub SplashTimer_Tick";
+RDebugUtils.currentLine=1441793;
+ //BA.debugLineNum = 1441793;BA.debugLine="If SplashTimer.Interval == 1500 Then";
+if (_splashtimer.getInterval()==1500) { 
+RDebugUtils.currentLine=1441794;
+ //BA.debugLineNum = 1441794;BA.debugLine="Msgbox(\"Ya fin\", \"FIn del timer\")";
+anywheresoftware.b4a.keywords.Common.Msgbox("Ya fin","FIn del timer",mostCurrent.activityBA);
+RDebugUtils.currentLine=1441795;
+ //BA.debugLineNum = 1441795;BA.debugLine="SplashTimer.Enabled = False";
+_splashtimer.setEnabled(anywheresoftware.b4a.keywords.Common.False);
+ };
+RDebugUtils.currentLine=1441797;
+ //BA.debugLineNum = 1441797;BA.debugLine="End Sub";
 return "";
 }
 }

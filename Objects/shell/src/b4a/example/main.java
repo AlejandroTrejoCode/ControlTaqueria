@@ -55,8 +55,9 @@ public boolean isSingleton() {
 		return pcBA;
 	}
 public static RemoteObject __c = RemoteObject.declareNull("anywheresoftware.b4a.keywords.Common");
+public static RemoteObject _splashtimer = RemoteObject.declareNull("anywheresoftware.b4a.objects.Timer");
 public static b4a.example.starter _starter = null;
   public Object[] GetGlobals() {
-		return new Object[] {"Activity",main.mostCurrent._activity,"Starter",Debug.moduleToString(b4a.example.starter.class)};
+		return new Object[] {"Activity",main.mostCurrent._activity,"SplashTimer",main._splashtimer,"Starter",Debug.moduleToString(b4a.example.starter.class)};
 }
 }
