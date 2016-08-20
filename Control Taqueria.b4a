@@ -7,10 +7,11 @@ IconFile=
 NumberOfFiles=2
 File1=main.bal
 File2=Splash.bal
-NumberOfLibraries=3
+NumberOfLibraries=4
 Library1=core
 Library2=animation
 Library3=animationplus
+Library4=dialogs
 @EndOfDesignText@
 #Region  Project Attributes 
 	#ApplicationLabel: Control Taquería
@@ -26,23 +27,25 @@ Library3=animationplus
 #End Region
 
 Sub Process_Globals	
-	Dim SplashTimer As Timer
-	Dim Contador  As Int	
+		Dim Password As String
 End Sub
 
 Sub Globals	
-
 	Private PanelLogin As Panel
-	Private SplashLogo As ImageView
-	Private Label1 As Label
+	Private SplashLogo As ImageView	
 	Dim AnimacionArriba As AnimationPlus
+	Dim AnimacionFade As Animation
 	Dim Animaciones As AnimationSet
-	
-	
+	Private Usuarios As Spinner
+	Private Button1 As Button
+
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)	
 	Activity.LoadLayout("Splash")'	
+	SplashLogo.BringToFront
+	Usuarios.AddAll(Array As String("Gerente","Chef","Mesero"))
+	
 End Sub
 
 Sub Activity_Resume
@@ -50,6 +53,7 @@ Animaciones.Initialize(False)
 AnimacionArriba.InitializeTranslate("AnimacionArriba",0,0,0,-22%y)
 Animaciones.AddAnimation(AnimacionArriba)
 Animaciones.Duration = 1000
+Animaciones.StartOffset = 1500
 Animaciones.PersistAfter = True
 Animaciones.Start(SplashLogo)
 End Sub
@@ -58,7 +62,27 @@ Sub Activity_Pause (UserClosed As Boolean)
 
 End Sub
 
-Sub SplashTimer_Tick'		
+Sub AnimacionArriba_AnimationEnd		
+	PanelLogin.BringToFront	
+	AnimacionFade.InitializeAlpha("AnimacionFade", 0, 1)
+	AnimacionFade.Duration = 1000
+	AnimacionFade.Start(PanelLogin)
 End Sub
-Sub AnimacionArriba_AnimationEnd	
+
+Sub AnimacionFade_AnimationEnd	
+End Sub
+
+
+
+Sub Button1_Click
+	If Usuarios.SelectedIndex = 0 Then
+		Dim Input As InputDialog
+		Input.Hint = "Ingresa tu contraseña"
+		Password = Input.Show("Escribre la contra: ","Autentificación requerida", "Aceptar", "Cancelar", "",Null)
+		If Password = "123" Then
+			Msgbox("Accediste man", "")
+			Else 
+				Msgbox("La k-gaste","")
+		End If
+	End If
 End Sub
