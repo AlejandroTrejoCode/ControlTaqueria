@@ -26,31 +26,43 @@ Library4=dialogs
 	#IncludeTitle: False
 #End Region
 
-Sub Process_Globals	
-		Dim Password As String
+Sub Process_Globals			
 End Sub
 
 Sub Globals	
 	Private PanelLogin As Panel
 	Private SplashLogo As ImageView	
+	Private Usuarios As Spinner	
+	Private PanelRojo As Panel
+	Private LabelSeleccion As Label
+	Private PanelCarta As Panel
+	Private PanelSombra As Panel
+	Private BotonAcceder As Button
+	Private BotonCancelar As Button
 	Dim AnimacionArriba As AnimationPlus
 	Dim AnimacionFade As Animation
-	Dim Animaciones As AnimationSet
-	Private Usuarios As Spinner
-	Private Button1 As Button
-
+	Dim AnimacionFadeRojo As Animation
+	Dim Animaciones As AnimationSet	
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)	
-	Activity.LoadLayout("Splash")'	
-	SplashLogo.BringToFront
-	Usuarios.AddAll(Array As String("Gerente","Chef","Mesero"))
-	
+	Activity.LoadLayout("Splash")'
+	'--- Spinner ----
+	Usuarios.AddAll(Array As String("Selecciona: ", "Gerente", "Chef", "Mesero"))	
+	Usuarios.DropdownBackgroundColor = Colors.RGB(255, 240, 203)
+	Usuarios.DropdownTextColor = Colors.RGB(234, 117, 108)
+	'--- Elevaciones ---
+	SplashLogo.BringToFront			
+	PanelCarta.SendToBack
+	PanelSombra.SendToBack
+	PanelRojo.Visible = False
+	LabelSeleccion.Visible = False
+	PanelLogin.Visible = False
 End Sub
 
 Sub Activity_Resume
 Animaciones.Initialize(False)
-AnimacionArriba.InitializeTranslate("AnimacionArriba",0,0,0,-22%y)
+AnimacionArriba.InitializeTranslate("AnimacionArriba",0,0,0,-10%y)
 Animaciones.AddAnimation(AnimacionArriba)
 Animaciones.Duration = 1000
 Animaciones.StartOffset = 1500
@@ -59,30 +71,26 @@ Animaciones.Start(SplashLogo)
 End Sub
 
 Sub Activity_Pause (UserClosed As Boolean)
-
 End Sub
 
-Sub AnimacionArriba_AnimationEnd		
-	PanelLogin.BringToFront	
+Sub AnimacionArriba_AnimationEnd
+	'--- Elevaciones --
+	PanelLogin.BringToFront
+	PanelLogin.Visible = True	
+	LabelSeleccion.BringToFront
+	LabelSeleccion.Visible = True
+	PanelRojo.BringToFront	
+	PanelRojo.Visible = True
+	Usuarios.Visible = True
+	PanelRojo.Visible = True
+	'--- Animaciones ---
 	AnimacionFade.InitializeAlpha("AnimacionFade", 0, 1)
+	AnimacionFadeRojo.InitializeAlpha("AnimacionFadeRojo", 0, 1)
+	AnimacionFadeRojo.Duration = 1000
 	AnimacionFade.Duration = 1000
-	AnimacionFade.Start(PanelLogin)
+	AnimacionFadeRojo.Start(PanelRojo)
+	AnimacionFade.Start(PanelLogin)	
 End Sub
 
 Sub AnimacionFade_AnimationEnd	
-End Sub
-
-
-
-Sub Button1_Click
-	If Usuarios.SelectedIndex = 0 Then
-		Dim Input As InputDialog
-		Input.Hint = "Ingresa tu contraseña"
-		Password = Input.Show("Escribre la contra: ","Autentificación requerida", "Aceptar", "Cancelar", "",Null)
-		If Password = "123" Then
-			Msgbox("Accediste man", "")
-			Else 
-				Msgbox("La k-gaste","")
-		End If
-	End If
 End Sub

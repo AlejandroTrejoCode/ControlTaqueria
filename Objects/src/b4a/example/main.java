@@ -32,7 +32,7 @@ public class main extends Activity implements B4AActivity{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		if (isFirst) {
-			processBA = new BA(this.getApplicationContext(), null, null, "b4a.example", "b4a.example.main");
+			processBA = new anywheresoftware.b4a.ShellBA(this.getApplicationContext(), null, null, "b4a.example", "b4a.example.main");
 			processBA.loadHtSubs(this.getClass());
 	        float deviceScale = getApplicationContext().getResources().getDisplayMetrics().density;
 	        BALayout.setDeviceScale(deviceScale);
@@ -318,134 +318,201 @@ public class main extends Activity implements B4AActivity{
             
     }
 
-public anywheresoftware.b4a.keywords.Common __c = null;
-public static String _password = "";
-public anywheresoftware.b4a.objects.PanelWrapper _panellogin = null;
-public anywheresoftware.b4a.objects.ImageViewWrapper _splashlogo = null;
-public flm.b4a.animationplus.AnimationPlusWrapper _animacionarriba = null;
-public anywheresoftware.b4a.objects.AnimationWrapper _animacionfade = null;
-public flm.b4a.animationplus.AnimationSet _animaciones = null;
-public anywheresoftware.b4a.objects.SpinnerWrapper _usuarios = null;
-public anywheresoftware.b4a.objects.ButtonWrapper _button1 = null;
-public b4a.example.starter _starter = null;
 
-public static boolean isAnyActivityVisible() {
-    boolean vis = false;
-vis = vis | (main.mostCurrent != null);
-return vis;}
-public static String  _activity_create(boolean _firsttime) throws Exception{
- //BA.debugLineNum = 29;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
- //BA.debugLineNum = 30;BA.debugLine="Activity.LoadLayout(\"Splash\")'";
-mostCurrent._activity.LoadLayout("Splash",mostCurrent.activityBA);
- //BA.debugLineNum = 31;BA.debugLine="SplashLogo.BringToFront";
-mostCurrent._splashlogo.BringToFront();
- //BA.debugLineNum = 32;BA.debugLine="Usuarios.AddAll(Array As String(\"Gerente\",\"Chef\",";
-mostCurrent._usuarios.AddAll(anywheresoftware.b4a.keywords.Common.ArrayToList(new String[]{"Gerente","Chef","Mesero"}));
- //BA.debugLineNum = 34;BA.debugLine="End Sub";
-return "";
-}
-public static String  _activity_pause(boolean _userclosed) throws Exception{
- //BA.debugLineNum = 46;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
- //BA.debugLineNum = 48;BA.debugLine="End Sub";
-return "";
-}
-public static String  _activity_resume() throws Exception{
- //BA.debugLineNum = 36;BA.debugLine="Sub Activity_Resume";
- //BA.debugLineNum = 37;BA.debugLine="Animaciones.Initialize(False)";
-mostCurrent._animaciones.Initialize(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 38;BA.debugLine="AnimacionArriba.InitializeTranslate(\"AnimacionArri";
-mostCurrent._animacionarriba.InitializeTranslate(mostCurrent.activityBA,"AnimacionArriba",(float) (0),(float) (0),(float) (0),(float) (-anywheresoftware.b4a.keywords.Common.PerYToCurrent((float) (22),mostCurrent.activityBA)));
- //BA.debugLineNum = 39;BA.debugLine="Animaciones.AddAnimation(AnimacionArriba)";
-mostCurrent._animaciones.AddAnimation(mostCurrent._animacionarriba);
- //BA.debugLineNum = 40;BA.debugLine="Animaciones.Duration = 1000";
-mostCurrent._animaciones.setDuration((long) (1000));
- //BA.debugLineNum = 41;BA.debugLine="Animaciones.StartOffset = 1500";
-mostCurrent._animaciones.setStartOffset((long) (1500));
- //BA.debugLineNum = 42;BA.debugLine="Animaciones.PersistAfter = True";
-mostCurrent._animaciones.setPersistAfter(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 43;BA.debugLine="Animaciones.Start(SplashLogo)";
-mostCurrent._animaciones.Start((android.view.View)(mostCurrent._splashlogo.getObject()));
- //BA.debugLineNum = 44;BA.debugLine="End Sub";
-return "";
-}
-public static String  _animacionarriba_animationend() throws Exception{
- //BA.debugLineNum = 50;BA.debugLine="Sub AnimacionArriba_AnimationEnd";
- //BA.debugLineNum = 51;BA.debugLine="PanelLogin.BringToFront";
-mostCurrent._panellogin.BringToFront();
- //BA.debugLineNum = 52;BA.debugLine="AnimacionFade.InitializeAlpha(\"AnimacionFade\", 0,";
-mostCurrent._animacionfade.InitializeAlpha(mostCurrent.activityBA,"AnimacionFade",(float) (0),(float) (1));
- //BA.debugLineNum = 53;BA.debugLine="AnimacionFade.Duration = 1000";
-mostCurrent._animacionfade.setDuration((long) (1000));
- //BA.debugLineNum = 54;BA.debugLine="AnimacionFade.Start(PanelLogin)";
-mostCurrent._animacionfade.Start((android.view.View)(mostCurrent._panellogin.getObject()));
- //BA.debugLineNum = 55;BA.debugLine="End Sub";
-return "";
-}
-public static String  _animacionfade_animationend() throws Exception{
- //BA.debugLineNum = 57;BA.debugLine="Sub AnimacionFade_AnimationEnd";
- //BA.debugLineNum = 58;BA.debugLine="End Sub";
-return "";
-}
-public static String  _button1_click() throws Exception{
-anywheresoftware.b4a.agraham.dialogs.InputDialog _input = null;
- //BA.debugLineNum = 62;BA.debugLine="Sub Button1_Click";
- //BA.debugLineNum = 63;BA.debugLine="If Usuarios.SelectedIndex = 0 Then";
-if (mostCurrent._usuarios.getSelectedIndex()==0) { 
- //BA.debugLineNum = 64;BA.debugLine="Dim Input As InputDialog";
-_input = new anywheresoftware.b4a.agraham.dialogs.InputDialog();
- //BA.debugLineNum = 65;BA.debugLine="Input.Hint = \"Ingresa tu contraseña\"";
-_input.setHint("Ingresa tu contraseña");
- //BA.debugLineNum = 66;BA.debugLine="Password = Input.Show(\"Escribre la contra: \",\"Au";
-_password = BA.NumberToString(_input.Show("Escribre la contra: ","Autentificación requerida","Aceptar","Cancelar","",mostCurrent.activityBA,(android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null)));
- //BA.debugLineNum = 67;BA.debugLine="If Password = \"123\" Then";
-if ((_password).equals("123")) { 
- //BA.debugLineNum = 68;BA.debugLine="Msgbox(\"Accediste man\", \"\")";
-anywheresoftware.b4a.keywords.Common.Msgbox("Accediste man","",mostCurrent.activityBA);
- }else {
- //BA.debugLineNum = 70;BA.debugLine="Msgbox(\"La k-gaste\",\"\")";
-anywheresoftware.b4a.keywords.Common.Msgbox("La k-gaste","",mostCurrent.activityBA);
- };
- };
- //BA.debugLineNum = 73;BA.debugLine="End Sub";
-return "";
-}
-public static String  _globals() throws Exception{
- //BA.debugLineNum = 18;BA.debugLine="Sub Globals";
- //BA.debugLineNum = 19;BA.debugLine="Private PanelLogin As Panel";
-mostCurrent._panellogin = new anywheresoftware.b4a.objects.PanelWrapper();
- //BA.debugLineNum = 20;BA.debugLine="Private SplashLogo As ImageView";
-mostCurrent._splashlogo = new anywheresoftware.b4a.objects.ImageViewWrapper();
- //BA.debugLineNum = 21;BA.debugLine="Dim AnimacionArriba As AnimationPlus";
-mostCurrent._animacionarriba = new flm.b4a.animationplus.AnimationPlusWrapper();
- //BA.debugLineNum = 22;BA.debugLine="Dim AnimacionFade As Animation";
-mostCurrent._animacionfade = new anywheresoftware.b4a.objects.AnimationWrapper();
- //BA.debugLineNum = 23;BA.debugLine="Dim Animaciones As AnimationSet";
-mostCurrent._animaciones = new flm.b4a.animationplus.AnimationSet();
- //BA.debugLineNum = 24;BA.debugLine="Private Usuarios As Spinner";
-mostCurrent._usuarios = new anywheresoftware.b4a.objects.SpinnerWrapper();
- //BA.debugLineNum = 25;BA.debugLine="Private Button1 As Button";
-mostCurrent._button1 = new anywheresoftware.b4a.objects.ButtonWrapper();
- //BA.debugLineNum = 27;BA.debugLine="End Sub";
-return "";
-}
 
 public static void initializeProcessGlobals() {
     
     if (main.processGlobalsRun == false) {
 	    main.processGlobalsRun = true;
 		try {
-		        main._process_globals();
-starter._process_globals();
-		
+		        		
         } catch (Exception e) {
 			throw new RuntimeException(e);
 		}
     }
-}public static String  _process_globals() throws Exception{
- //BA.debugLineNum = 14;BA.debugLine="Sub Process_Globals";
- //BA.debugLineNum = 15;BA.debugLine="Dim Password As String";
-_password = "";
- //BA.debugLineNum = 16;BA.debugLine="End Sub";
+}
+public static boolean isAnyActivityVisible() {
+    boolean vis = false;
+vis = vis | (main.mostCurrent != null);
+return vis;}
+
+private static BA killProgramHelper(BA ba) {
+    if (ba == null)
+        return null;
+    anywheresoftware.b4a.BA.SharedProcessBA sharedProcessBA = ba.sharedProcessBA;
+    if (sharedProcessBA == null || sharedProcessBA.activityBA == null)
+        return null;
+    return sharedProcessBA.activityBA.get();
+}
+public static void killProgram() {
+     {
+            Activity __a = null;
+            if (main.previousOne != null) {
+				__a = main.previousOne.get();
+			}
+            else {
+                BA ba = killProgramHelper(main.mostCurrent == null ? null : main.mostCurrent.processBA);
+                if (ba != null) __a = ba.activity;
+            }
+            if (__a != null)
+				__a.finish();}
+
+BA.applicationContext.stopService(new android.content.Intent(BA.applicationContext, starter.class));
+}
+public anywheresoftware.b4a.keywords.Common __c = null;
+public anywheresoftware.b4a.objects.PanelWrapper _panellogin = null;
+public anywheresoftware.b4a.objects.ImageViewWrapper _splashlogo = null;
+public flm.b4a.animationplus.AnimationPlusWrapper _animacionarriba = null;
+public anywheresoftware.b4a.objects.AnimationWrapper _animacionfade = null;
+public anywheresoftware.b4a.objects.AnimationWrapper _animacionfaderojo = null;
+public flm.b4a.animationplus.AnimationSet _animaciones = null;
+public anywheresoftware.b4a.objects.SpinnerWrapper _usuarios = null;
+public anywheresoftware.b4a.objects.PanelWrapper _panelrojo = null;
+public anywheresoftware.b4a.objects.LabelWrapper _labelseleccion = null;
+public anywheresoftware.b4a.objects.PanelWrapper _panelcarta = null;
+public anywheresoftware.b4a.objects.PanelWrapper _panelsombra = null;
+public anywheresoftware.b4a.objects.ButtonWrapper _botonacceder = null;
+public anywheresoftware.b4a.objects.ButtonWrapper _botoncancelar = null;
+public b4a.example.starter _starter = null;
+public static String  _activity_create(boolean _firsttime) throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_create"))
+	return (String) Debug.delegate(mostCurrent.activityBA, "activity_create", new Object[] {_firsttime});
+RDebugUtils.currentLine=131072;
+ //BA.debugLineNum = 131072;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+RDebugUtils.currentLine=131073;
+ //BA.debugLineNum = 131073;BA.debugLine="Activity.LoadLayout(\"Splash\")'";
+mostCurrent._activity.LoadLayout("Splash",mostCurrent.activityBA);
+RDebugUtils.currentLine=131074;
+ //BA.debugLineNum = 131074;BA.debugLine="SplashLogo.BringToFront";
+mostCurrent._splashlogo.BringToFront();
+RDebugUtils.currentLine=131075;
+ //BA.debugLineNum = 131075;BA.debugLine="Usuarios.AddAll(Array As String(\"Selecciona: \", \"";
+mostCurrent._usuarios.AddAll(anywheresoftware.b4a.keywords.Common.ArrayToList(new String[]{"Selecciona: ","Gerente","Chef","Mesero"}));
+RDebugUtils.currentLine=131076;
+ //BA.debugLineNum = 131076;BA.debugLine="Usuarios.DropdownBackgroundColor = Colors.RGB(255";
+mostCurrent._usuarios.setDropdownBackgroundColor(anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (255),(int) (240),(int) (203)));
+RDebugUtils.currentLine=131077;
+ //BA.debugLineNum = 131077;BA.debugLine="Usuarios.DropdownTextColor = Colors.RGB(234, 117,";
+mostCurrent._usuarios.setDropdownTextColor(anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (234),(int) (117),(int) (108)));
+RDebugUtils.currentLine=131078;
+ //BA.debugLineNum = 131078;BA.debugLine="PanelCarta.SendToBack";
+mostCurrent._panelcarta.SendToBack();
+RDebugUtils.currentLine=131079;
+ //BA.debugLineNum = 131079;BA.debugLine="PanelSombra.SendToBack";
+mostCurrent._panelsombra.SendToBack();
+RDebugUtils.currentLine=131080;
+ //BA.debugLineNum = 131080;BA.debugLine="PanelRojo.Visible = False";
+mostCurrent._panelrojo.setVisible(anywheresoftware.b4a.keywords.Common.False);
+RDebugUtils.currentLine=131081;
+ //BA.debugLineNum = 131081;BA.debugLine="LabelSeleccion.Visible = False";
+mostCurrent._labelseleccion.setVisible(anywheresoftware.b4a.keywords.Common.False);
+RDebugUtils.currentLine=131082;
+ //BA.debugLineNum = 131082;BA.debugLine="PanelLogin.Visible = False";
+mostCurrent._panellogin.setVisible(anywheresoftware.b4a.keywords.Common.False);
+RDebugUtils.currentLine=131083;
+ //BA.debugLineNum = 131083;BA.debugLine="End Sub";
+return "";
+}
+public static String  _activity_pause(boolean _userclosed) throws Exception{
+RDebugUtils.currentModule="main";
+RDebugUtils.currentLine=262144;
+ //BA.debugLineNum = 262144;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+RDebugUtils.currentLine=262146;
+ //BA.debugLineNum = 262146;BA.debugLine="End Sub";
+return "";
+}
+public static String  _activity_resume() throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_resume"))
+	return (String) Debug.delegate(mostCurrent.activityBA, "activity_resume", null);
+RDebugUtils.currentLine=196608;
+ //BA.debugLineNum = 196608;BA.debugLine="Sub Activity_Resume";
+RDebugUtils.currentLine=196609;
+ //BA.debugLineNum = 196609;BA.debugLine="Animaciones.Initialize(False)";
+mostCurrent._animaciones.Initialize(anywheresoftware.b4a.keywords.Common.False);
+RDebugUtils.currentLine=196610;
+ //BA.debugLineNum = 196610;BA.debugLine="AnimacionArriba.InitializeTranslate(\"AnimacionArri";
+mostCurrent._animacionarriba.InitializeTranslate(mostCurrent.activityBA,"AnimacionArriba",(float) (0),(float) (0),(float) (0),(float) (-anywheresoftware.b4a.keywords.Common.PerYToCurrent((float) (10),mostCurrent.activityBA)));
+RDebugUtils.currentLine=196611;
+ //BA.debugLineNum = 196611;BA.debugLine="Animaciones.AddAnimation(AnimacionArriba)";
+mostCurrent._animaciones.AddAnimation(mostCurrent._animacionarriba);
+RDebugUtils.currentLine=196612;
+ //BA.debugLineNum = 196612;BA.debugLine="Animaciones.Duration = 1000";
+mostCurrent._animaciones.setDuration((long) (1000));
+RDebugUtils.currentLine=196613;
+ //BA.debugLineNum = 196613;BA.debugLine="Animaciones.StartOffset = 1500";
+mostCurrent._animaciones.setStartOffset((long) (1500));
+RDebugUtils.currentLine=196614;
+ //BA.debugLineNum = 196614;BA.debugLine="Animaciones.PersistAfter = True";
+mostCurrent._animaciones.setPersistAfter(anywheresoftware.b4a.keywords.Common.True);
+RDebugUtils.currentLine=196615;
+ //BA.debugLineNum = 196615;BA.debugLine="Animaciones.Start(SplashLogo)";
+mostCurrent._animaciones.Start((android.view.View)(mostCurrent._splashlogo.getObject()));
+RDebugUtils.currentLine=196616;
+ //BA.debugLineNum = 196616;BA.debugLine="End Sub";
+return "";
+}
+public static String  _animacionarriba_animationend() throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "animacionarriba_animationend"))
+	return (String) Debug.delegate(mostCurrent.activityBA, "animacionarriba_animationend", null);
+RDebugUtils.currentLine=327680;
+ //BA.debugLineNum = 327680;BA.debugLine="Sub AnimacionArriba_AnimationEnd";
+RDebugUtils.currentLine=327681;
+ //BA.debugLineNum = 327681;BA.debugLine="PanelLogin.BringToFront";
+mostCurrent._panellogin.BringToFront();
+RDebugUtils.currentLine=327682;
+ //BA.debugLineNum = 327682;BA.debugLine="PanelLogin.Visible = True";
+mostCurrent._panellogin.setVisible(anywheresoftware.b4a.keywords.Common.True);
+RDebugUtils.currentLine=327683;
+ //BA.debugLineNum = 327683;BA.debugLine="LabelSeleccion.BringToFront";
+mostCurrent._labelseleccion.BringToFront();
+RDebugUtils.currentLine=327684;
+ //BA.debugLineNum = 327684;BA.debugLine="LabelSeleccion.Visible = True";
+mostCurrent._labelseleccion.setVisible(anywheresoftware.b4a.keywords.Common.True);
+RDebugUtils.currentLine=327685;
+ //BA.debugLineNum = 327685;BA.debugLine="PanelRojo.BringToFront";
+mostCurrent._panelrojo.BringToFront();
+RDebugUtils.currentLine=327686;
+ //BA.debugLineNum = 327686;BA.debugLine="PanelRojo.Visible = True";
+mostCurrent._panelrojo.setVisible(anywheresoftware.b4a.keywords.Common.True);
+RDebugUtils.currentLine=327687;
+ //BA.debugLineNum = 327687;BA.debugLine="AnimacionFade.InitializeAlpha(\"AnimacionFade\", 0,";
+mostCurrent._animacionfade.InitializeAlpha(mostCurrent.activityBA,"AnimacionFade",(float) (0),(float) (1));
+RDebugUtils.currentLine=327688;
+ //BA.debugLineNum = 327688;BA.debugLine="AnimacionFadeRojo.InitializeAlpha(\"AnimacionFadeR";
+mostCurrent._animacionfaderojo.InitializeAlpha(mostCurrent.activityBA,"AnimacionFadeRojo",(float) (0),(float) (1));
+RDebugUtils.currentLine=327689;
+ //BA.debugLineNum = 327689;BA.debugLine="AnimacionFadeRojo.Duration = 1000";
+mostCurrent._animacionfaderojo.setDuration((long) (1000));
+RDebugUtils.currentLine=327690;
+ //BA.debugLineNum = 327690;BA.debugLine="AnimacionFade.Duration = 1000";
+mostCurrent._animacionfade.setDuration((long) (1000));
+RDebugUtils.currentLine=327691;
+ //BA.debugLineNum = 327691;BA.debugLine="AnimacionFadeRojo.Start(PanelRojo)";
+mostCurrent._animacionfaderojo.Start((android.view.View)(mostCurrent._panelrojo.getObject()));
+RDebugUtils.currentLine=327692;
+ //BA.debugLineNum = 327692;BA.debugLine="AnimacionFade.Start(PanelLogin)";
+mostCurrent._animacionfade.Start((android.view.View)(mostCurrent._panellogin.getObject()));
+RDebugUtils.currentLine=327693;
+ //BA.debugLineNum = 327693;BA.debugLine="Usuarios.Visible = True";
+mostCurrent._usuarios.setVisible(anywheresoftware.b4a.keywords.Common.True);
+RDebugUtils.currentLine=327694;
+ //BA.debugLineNum = 327694;BA.debugLine="PanelRojo.Visible = True";
+mostCurrent._panelrojo.setVisible(anywheresoftware.b4a.keywords.Common.True);
+RDebugUtils.currentLine=327695;
+ //BA.debugLineNum = 327695;BA.debugLine="End Sub";
+return "";
+}
+public static String  _animacionfade_animationend() throws Exception{
+RDebugUtils.currentModule="main";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "animacionfade_animationend"))
+	return (String) Debug.delegate(mostCurrent.activityBA, "animacionfade_animationend", null);
+RDebugUtils.currentLine=393216;
+ //BA.debugLineNum = 393216;BA.debugLine="Sub AnimacionFade_AnimationEnd";
+RDebugUtils.currentLine=393217;
+ //BA.debugLineNum = 393217;BA.debugLine="End Sub";
 return "";
 }
 }
