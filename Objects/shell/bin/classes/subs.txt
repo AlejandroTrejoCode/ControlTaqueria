@@ -1,27 +1,35 @@
 b4a.example
 0
 0
-main,activity_create,1,0,33,44
+main,activity_create,1,1,35,48
 ,botonacceder,,botoncancelar,,labelseleccion,,panelcarta,,panellogin,,panelrojo,,panelsombra,,splashlogo,,usuarios
 ,botonacceder,,botoncancelar,,labelseleccion,,panelcarta,,panellogin,,panelrojo,,panelsombra,,splashlogo,,usuarios
 
-main,activity_pause,0,0,56,58
+main,activity_pause,0,0,60,61
 
 
 
-main,activity_resume,0,0,46,54
+main,activity_resume,0,0,50,58
 ,animaciones,,animacionarriba,,splashlogo
 
 
-main,animacionarriba_animationend,0,0,60,75
-,panellogin,,labelseleccion,,panelrojo,,animacionfade,,animacionfaderojo,,usuarios
+main,animacionarriba_animationend,0,0,63,80
+,panellogin,,labelseleccion,,panelrojo,,usuarios,,animacionfade,,animacionfaderojo
 
 
-main,animacionfade_animationend,0,0,77,78
+main,animacionfade_animationend,0,0,82,83
 
 
 
-main,globals,0,1,17,31
+main,botonacceder_click,1,1,85,94
+,usuarios,,password,,input
+,password
+
+main,botoncancelar_click,0,1,96,98
+
+
+
+main,globals,0,1,17,33
 
 
 

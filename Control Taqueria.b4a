@@ -43,12 +43,14 @@ Sub Globals
 	Dim AnimacionFade As Animation
 	Dim AnimacionFadeRojo As Animation
 	Dim Animaciones As AnimationSet	
+	Dim Input As InputDialog
+	Dim Password As String
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)	
 	Activity.LoadLayout("Splash")'
 	'--- Spinner ----
-	Usuarios.AddAll(Array As String("Selecciona: ", "Gerente", "Chef", "Mesero"))	
+	Usuarios.AddAll(Array As String( "Gerente", "Chef", "Mesero"))	
 	Usuarios.DropdownBackgroundColor = Colors.RGB(255, 240, 203)
 	Usuarios.DropdownTextColor = Colors.RGB(234, 117, 108)
 	'--- Elevaciones ---
@@ -57,7 +59,7 @@ Sub Activity_Create(FirstTime As Boolean)
 	PanelSombra.SendToBack
 	PanelRojo.Visible = False
 	LabelSeleccion.Visible = False
-	PanelLogin.Visible = False
+	PanelLogin.Visible = False			
 End Sub
 
 Sub Activity_Resume
@@ -93,4 +95,19 @@ Sub AnimacionArriba_AnimationEnd
 End Sub
 
 Sub AnimacionFade_AnimationEnd	
+End Sub
+
+Sub BotonAcceder_Click
+	If Usuarios.SelectedIndex = 0 Then		
+		Password = Input.Show("", "Escriba la contraseña", "Aceptar", "Cancelar", "", Null)		
+		If Password = -1 Then
+			ToastMessageShow(Input.Input ,False)						
+		End If
+		Else
+			ToastMessageShow("Accediste como: " & Usuarios.SelectedItem, False)
+	End If
+End Sub
+
+Sub BotonCancelar_Click
+	Activity.Finish	
 End Sub
